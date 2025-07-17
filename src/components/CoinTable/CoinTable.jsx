@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinData } from "../../services/fetchCoinData";
 
-function CoinTable() {
+function CoinTable({curr}) {
   const [page, setPage] = useState(1);
 
   const {
@@ -11,15 +11,17 @@ function CoinTable() {
     isError,
     error,
   } = useQuery({
-    queryKey: ['coins', page],
-    queryFn: () => fetchCoinData(page, 'usd'),
+    queryKey: ['coins', page, curr],
+    queryFn: () => fetchCoinData(page, curr),
     cacheTime: 1000 * 60 * 2,
+    staleTime: 1000 * 60 * 2, // how long the data is considered fresh in cache
   });
 
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
       <div className="my-5 flex flex-col item-center justify-center gap-5 w-[80vw] mx-auto">
+        <div className="text-center">{(curr.toUpperCase())}</div>
           {/* coin heading */}
           <div className="w-full bg-yellow-400 text-black flex py-4 px-2 font-semibold item-center justify-center">
               <div className="basis-[35%]">Coin</div>
@@ -33,7 +35,6 @@ function CoinTable() {
               {data && data.map((coin) => {
                   return (
                       <div key = {coin.id} className="w-full bg-transparent text-white flex py-4 px-2 font-semibold items-center justify-between">
-
                         <div className="flex items-center justify-start gap-3 basis-[35%]">
                             <div className="w-[5rem] h-[5rem]">
                               <img src={coin.image} className="w-full h-full"/>
@@ -46,7 +47,7 @@ function CoinTable() {
                         </div>
 
                         <div className="basis-[25%]">
-                          {coin.high_24h}
+                          {coin.current_price}
                         </div>
 
                         <div className="basis-[20%]">
