@@ -1,5 +1,11 @@
 import React from "react";
-function Navbar({setCurr}) {
+import { useContext } from "react";
+import { CurrencyContext } from "../../context/CurrencyContext";
+
+function Navbar() {
+  const valueObject = React.useContext(CurrencyContext);
+  const setCurr = valueObject.setCurr;
+ 
     return (
         <>
           <div className="navbar bg-base-100 shadow-sm">
