@@ -1,14 +1,69 @@
-# React + Vite
+Here’s a tailored README.md for your CryptoTracker project, based on your description:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+# CryptoTracker
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+CryptoTracker is a React application for tracking cryptocurrency prices, 24-hour changes, market capitalization, and other key details. The app fetches live data from an API and displays it in a paginated table, making it easy to monitor various coins and their performance.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Live cryptocurrency prices
+- 24-hour price change and market cap tracking
+- Displays coin name and symbol
+- Pagination with next/previous navigation
+- Data fetching via API
+- Built with React, Vite, Tailwind CSS, and DaisyUI
+
+## Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+- DaisyUI
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/ypramod25/CryptoTracker.git
+cd CryptoTracker
+npm install
+```
+
+### Running the App
+
+```bash
+npm run dev
+```
+
+The app should now be running at http://localhost:5173
+
+## Usage
+
+- View a list of cryptocurrencies with their current price, 24h change, and market cap.
+- Use pagination controls to navigate through the list.
+- Data updates automatically via API calls.
+
+## Customization
+
+- Update API endpoints or add more features as needed.
+- Style with Tailwind and DaisyUI classes for a customized UI.
+
+## License
+
+MIT
+
+---
+
+Let me know if you’d like to add a section (screenshots, deployment, contribution, etc.) or need further customization!
 
 ![alt text](image.png)
+
+
