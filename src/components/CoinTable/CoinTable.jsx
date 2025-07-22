@@ -99,10 +99,16 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinData } from "../../services/fetchCoinData";
 import store from "../../state/store";
+import { useNavigate } from "react-router-dom";
 function CoinTable() {
 
   const [page, setPage] = useState(1);
   const { curr } = store();
+
+  const navigate = useNavigate();
+  function handleCoinRedirect(coinID) {
+    navigate(`/details/${coinID}`);
+  }
 
   const {
     data,
@@ -133,7 +139,7 @@ function CoinTable() {
         {(isLoading) && <div>Loading...</div>}
         {data && data.map((coin) => {
           return (
-            <div key={coin.id} className="w-full bg-transparent text-white flex flex-col md:flex-row py-2 md:py-4 px-2 font-semibold items-center justify-between text-xs md:text-base border-b border-gray-700">
+            <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="w-full cursor-pointer bg-transparent text-white flex flex-col md:flex-row py-2 md:py-4 px-2 font-semibold items-center justify-between text-xs md:text-base border-b border-gray-700">
               <div className="flex items-center justify-start gap-3 w-full md:basis-[35%] mb-2 md:mb-0">
                 <div className="w-12 h-12 md:w-[5rem] md:h-[5rem]">
                   <img src={coin.image} className="w-full h-full" alt={coin.name} />
