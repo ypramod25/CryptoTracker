@@ -41,14 +41,22 @@ function CoinTable() {
         <div className="w-full md:basis-[20%] text-center md:text-left">Market Cap</div>
       </div>
       {/* coin data */}
-      <div className="flex flex-col w-full">
-        {(isLoading) && <PageLoader />}
-        {data && data.map((coin) => {
-          return (
-            <div onClick={() => handleCoinRedirect(coin.id)} key={coin.id} className="w-full cursor-pointer bg-transparent text-white flex flex-col md:flex-row py-2 md:py-4 px-2 font-semibold items-center justify-between text-xs md:text-base border-b border-gray-700">
+        <div className="flex flex-col w-full h-full max-h-[70vh] overflow-y-auto">
+          {(isLoading) && <PageLoader />}
+          {data && data.map((coin) => (
+            <div
+              onClick={() => handleCoinRedirect(coin.id)}
+              key={coin.id}
+              className="w-full cursor-pointer bg-transparent text-white flex flex-col md:flex-row py-2 md:py-4 px-2 font-semibold items-center justify-between text-xs md:text-base border-b border-gray-700"
+            >
               <div className="flex items-center justify-start gap-3 w-full md:basis-[35%] mb-2 md:mb-0">
                 <div className="w-12 h-12 md:w-[5rem] md:h-[5rem]">
-                  <img src={coin.image} className="w-full h-full" alt={coin.name} />
+                  <img
+                    src={coin.image}
+                    className="w-full h-full"
+                    alt={coin.name}
+                    loading="lazy"
+                  />
                 </div>
                 <div>
                   <div className="text-base md:text-3xl">{coin.name}</div>
@@ -59,9 +67,8 @@ function CoinTable() {
               <div className="w-full md:basis-[20%] text-center md:text-left">{coin.price_change_24h}</div>
               <div className="w-full md:basis-[20%] text-center md:text-left">{coin.market_cap}</div>
             </div>
-          )
-        })}
-      </div>
+          ))}
+        </div>
       {/* button */}
       <div className="flex gap-4 justify-center items-center w-full">
         <button
