@@ -1,10 +1,11 @@
 import React, { use, useContext } from "react";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from '@tanstack/react-query';
 import { fetchCoinDetails } from "../services/fetchCoinDetails";
 import store from '../state/store';
 import PageLoader from "../components/PageLoader/PageLoader";
+import CoinInfoContainer from "../components/CoinInfo/CoinInfoContainer";
+
 function CoinDetailsPage() {
     const {coinId} = useParams(); // Assuming you are using react-router to get the coin ID
     const { data : coin, isLoading, error } = useQuery({
@@ -23,7 +24,7 @@ function CoinDetailsPage() {
         <div className="flex flex-col md:flex-row">
 
             <div
-                className="md:w-1/3 w-full flex flex-col items-center justify-center mt-6 md:mt-0 border-r-2  border-gray-500"
+                className="md:w-1/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2  border-gray-500"
             >
                 <img 
                 src={coin?.image?.large} alt={coin?.name} className="h-52 mb-5" />
@@ -58,11 +59,7 @@ function CoinDetailsPage() {
 
             </div>
 
-            <div
-            className="text-2xl text-center w-full">
-                Coin Information
-            </div>
-
+            <div> <CoinInfoContainer coinId = {coinId}/> </div>
             
         </div>
         </>

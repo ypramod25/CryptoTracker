@@ -62,8 +62,8 @@ MIT
 
 ---
 
-Let me know if you’d like to add a section (screenshots, deployment, contribution, etc.) or need further customization!
+![alt text](image-2.png)
+![alt text](image-1.png)
 
-![alt text](image.png)
 
 
