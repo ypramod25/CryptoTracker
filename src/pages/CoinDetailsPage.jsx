@@ -5,16 +5,13 @@ import { fetchCoinDetails } from "../services/fetchCoinDetails";
 import store from '../state/store';
 import PageLoader from "../components/PageLoader/PageLoader";
 import CoinInfoContainer from "../components/CoinInfo/CoinInfoContainer";
+import useFetchCoin from "../hooks/useFetchCoin";
 
 function CoinDetailsPage() {
-    const {coinId} = useParams(); // Assuming you are using react-router to get the coin ID
-    const { data : coin, isLoading, error } = useQuery({
-        queryKey: ['coinDetails', coinId],
-        queryFn: () => fetchCoinDetails(coinId),
-        catcheTime: 1000 * 60 * 2, // Cache for 2 minutes
-        staleTime: 1000 * 60 * 2,
-        });
-    const {curr} = store();
+
+    const { coinId } = useParams(); // Assuming you are using react-router to get the coin ID
+    const [coin, isLoading, error] = useFetchCoin(coinId);
+    const { curr } = store();
 
     if (isLoading) return <PageLoader/>;
     if (error) return <div>Error: {error.message}</div>;
@@ -59,8 +56,9 @@ function CoinDetailsPage() {
 
             </div>
 
-        <div className="md:w-2/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-b-3 border-gray-500">
-            <CoinInfoContainer coinId = {coinId}/> </div> 
+            <div className="md:w-2/3 w-full flex flex-col items-center mt-6 md:mt-0 border-r-2 border-b-3 border-gray-500">
+                <CoinInfoContainer coinId = {coinId}/> 
+            </div> 
         </div>
         </>
     );

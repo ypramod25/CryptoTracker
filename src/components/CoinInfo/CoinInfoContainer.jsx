@@ -11,6 +11,7 @@ function CoinInfoContainer({coinId}) {
 
   const [historicData, isLoading, isError, days, setDays, setCoinInterval] = useCoinFetchCoinHistroy(coinId);
 
+  const {curr} = store();
   if(isLoading) {
     return <PageLoader />;
   }
