@@ -1,7 +1,7 @@
 Here’s a tailored README.md for your CryptoTracker project, based on your description:
 
 ---
-
+[Deploy Link](https://crypto-tracker-psi-kohl.vercel.app/)
 # CryptoTracker
 
 CryptoTracker is a React application for tracking cryptocurrency prices, 24-hour changes, market capitalization, and other key details. The app fetches live data from an API and displays it in a paginated table, making it easy to monitor various coins and their performance.
