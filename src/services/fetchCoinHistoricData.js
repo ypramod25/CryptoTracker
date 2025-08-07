@@ -8,6 +8,11 @@ export async function fetchCoinHistoricData(id, currency = 'usd', interval = 'da
 
     } catch(error) {
         console.error(error);
-        return null;
+        // ✅ Throw error to let React Query know it failed
+        throw new Error(
+        error?.response?.data?.message ||
+        error?.message ||
+        'Failed to fetch coin data'
+        );
     }
 }

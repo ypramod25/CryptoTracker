@@ -5,27 +5,18 @@ import store from "../../state/store";
 import { fetchCoinHistoricData } from "../../services/fetchCoinHistoricData";
 import PageLoader from "../PageLoader/PageLoader";
 import Alert from "../Alert/Alert";
+import useCoinFetchCoinHistroy from "../../hooks/useFetchCoinHistory";
 
 function CoinInfoContainer({coinId}) {
 
-  const {curr} = store(); 
-  const [days, setDays] = useState(7);
-  const [interval, setCoinInterval] = useState('');
-
-  const {data:historicData, isLoading, isError} = useQuery({
-    queryKey: ['coinHistoricData', coinId, curr, days],
-    queryFn: () => fetchCoinHistoricData(coinId, curr, '', days),
-    cacheTime: 1000 * 60 * 2, // 1 hour
-    staleTime: 1000 * 60 * 2, // 5 minutes
-
-  })
+  const [historicData, isLoading, isError, days, setDays, setCoinInterval] = useCoinFetchCoinHistroy(coinId);
 
   if(isLoading) {
     return <PageLoader />;
   }
 
   if(isError) {
-    return <Alert message="Error fetching data" type={'error'} />;
+    return <Alert message="Error fetching data" type="warning"/>;
   }
   
   return (

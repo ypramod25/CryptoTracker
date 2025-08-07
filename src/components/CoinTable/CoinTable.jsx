@@ -5,6 +5,7 @@ import { fetchCoinData } from "../../services/fetchCoinData";
 import store from "../../state/store";
 import { useNavigate } from "react-router-dom";
 import PageLoader from "../PageLoader/PageLoader";
+import Alert from "../Alert/Alert";
 
 function CoinTable() {
 
@@ -28,7 +29,7 @@ function CoinTable() {
     staleTime: 1000 * 60 * 2,
   });
 
-  if (isError) return <div>Error: {error.message}</div>;
+  if (isError) return <Alert message={`Error: ${error.message}`} type="warning" />;
 
   return (
     <div className="my-5 flex flex-col items-center justify-center gap-5 w-full px-2">
@@ -74,13 +75,13 @@ function CoinTable() {
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
-          className="btn btn-primary btn-wide text-white text-base md:text-2xl rounded"
+          className="btn btn-neutral btn-wide text-white text-base md:text-2xl rounded"
         >
           Prev
         </button>
         <button
           onClick={() => setPage(page + 1)}
-          className="btn btn-secondary btn-wide text-white text-base md:text-2xl rounded"
+          className="btn btn-info btn-wide text-white text-base md:text-2xl rounded"
         >
           Next
         </button>
