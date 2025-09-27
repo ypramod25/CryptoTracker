@@ -3,7 +3,6 @@ import React from "react";
 // import { CurrencyContext } from "../../context/CurrencyContext";
 import store from "../../state/store";
 import { useNavigate } from "react-router-dom";
-
 function Navbar() {
   // const valueObject = React.useContext(CurrencyContext);
   // const setCurr = valueObject.setCurr;

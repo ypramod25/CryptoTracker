@@ -14,7 +14,7 @@ function CoinInfo({ historicData, setDays, setInterval, days, curr }) {
     } else {
       setInterval?.('daily');
     }
-    setDays?.(daysSelected);
+    setDays?.(daysSelected); 
   }
 
   if (!historicData) {
@@ -40,7 +40,7 @@ function CoinInfo({ historicData, setDays, setInterval, days, curr }) {
     maintainAspectRatio: false,
     elements: {
       point : {
-        radius: 0,
+        radius: 2,
       }
     }
   };

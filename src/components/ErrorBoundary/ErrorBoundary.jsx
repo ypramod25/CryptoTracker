@@ -6,7 +6,6 @@ function CustomErrorBoundaryUI({error, resetErrorBoundary}) {
         <div className="flex flex-col items-center justify-center h-screen bg-gray-100"> 
             <div role='alert' className='alert alert-error'> 
                 <p>Something went wrong</p>
-                <div>{error?.message}</div>
                 <button onClick={resetErrorBoundary}>Try Again</button>
             </div>
         </div>
